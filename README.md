@@ -9,11 +9,11 @@
                         \      \       _,'
                          `'--.._\..--''
 ```
-A dockerized Jupyter server for data science
+A dockerized Jupyter server for data science.
 
 ## Docker Machine set up on Windows
 
-Start the Docker Quick Strat Terminal and cd into the source directory, stop the Docker Machine and create a shared folder between Windows and Virtual Box.
+Start the Docker Quick Start Terminal and cd into the source directory, stop the Docker Machine and create a shared folder between Windows and Virtual Box.
 
 ```
 docker-machine stop default
