@@ -37,7 +37,5 @@ Create the container from the Dockerfile. This may take some time on the first i
 Run the container.
 
 ```
-run:
-	docker-machine ssh default 'docker run -d -p 4321:4321 -v /home/docker/blog:/home/app/blog --name=jekyserv bayesjumping/blog:0.1'
-
+docker-machine ssh default 'docker run -d -p 8888:8888 -v /home/docker/notebooks:/home/jovyan/work --name=notebooks bayesjumping/jupyterserver:0.1 start-notebook.sh'
 ```
