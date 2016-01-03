@@ -25,7 +25,7 @@ Create a folder in Docker Machine to hold the notebooks. Synchronize this folder
 
 ```
 docker-machine ssh default 'mkdir notebooks'
-docker-machine ssh default 'sudo mount -t vboxsf -o defaults,uid=`id -u docker`,gid=`id -g docker` notebooks /home/docker/blog'
+docker-machine ssh default 'sudo mount -t vboxsf -o defaults,uid=`id -u docker`,gid=`id -g docker` notebooks /home/docker/notebooks'
 ```
 
 Create the container from the Dockerfile. This may take some time on the first install.
