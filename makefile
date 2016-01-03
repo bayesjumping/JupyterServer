@@ -1,6 +1,3 @@
-
-.PHONY: dev
-
 help:
 	@echo
 	@echo '             build - builds image'
@@ -22,3 +19,9 @@ run:
 stop:
 	docker stop notebooks
 	docker rm notebooks
+
+bash-container:
+	docker exec -it notebooks bash
+
+install-extra-packages-py2:
+	docker exec -it notebooks "source activate python2;pip install daft"
