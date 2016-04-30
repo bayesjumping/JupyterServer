@@ -1,4 +1,4 @@
-FROM jupyter/minimal-notebook
+FROM jupyter/minimal-notebook:9cb6443840b2
 
 MAINTAINER Karl Prior <karl@bayesjumping.net>
 
