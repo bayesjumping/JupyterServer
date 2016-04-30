@@ -28,3 +28,9 @@ install-extra-packages-py2:
 
 run-aws:
 	docker run -d -p 443:8888 -e PASSWORD="your_pass" -e USE_HTTPS=yes -e GRANT_SUDO=yes -v /home/ubuntu/JupyterServer/notebooks:/home/jovyan/work --user root --name=notebooks bayesjumping/jupyterserver:0.1 start-notebook.sh
+
+run-aws-ds:
+	docker run -d -p 443:8888 -e PASSWORD="your_pass" -e USE_HTTPS=yes -e GRANT_SUDO=yes -v /home/ubuntu/JupyterServer/notebooks:/home/jovyan/work --user root --name=notebooks jupyter/datascience-notebook start-notebook.sh
+
+pull-docker-ds:
+	docker pull jupyter/datascience-notebook
