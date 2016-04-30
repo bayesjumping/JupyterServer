@@ -14,7 +14,7 @@ machine-ssh:
 	docker-machine ssh default
 
 run:
-	docker-machine ssh default 'docker run -d -p 8888:8888 -v /home/JupyterServer:/home/jovyan/work --name=notebooks bayesjumping/jupyterserver:0.1 start-notebook.sh'
+	docker-machine ssh default 'docker run -d -p 8888:8888 -v /home/docker/notebooks:/home/jovyan/work --name=notebooks bayesjumping/jupyterserver:0.1 start-notebook.sh'
 
 stop:
 	docker stop notebooks
