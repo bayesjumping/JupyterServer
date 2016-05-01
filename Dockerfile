@@ -1,6 +1,8 @@
-FROM jupyter/minimal-notebook:9cb6443840b2
+# Copyright (c) Jupyter Development Team.
+# Distributed under the terms of the Modified BSD License.
+FROM jupyter/scipy-notebook
 
-MAINTAINER Karl Prior <karl@bayesjumping.net>
+MAINTAINER Jupyter Project <jupyter@googlegroups.com>
 
 USER root
 
@@ -9,53 +11,14 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     fonts-dejavu \
     gfortran \
-    gcc && apt-get clean
+    gcc && apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 USER jovyan
 
-# Install Python 3 packages
-RUN conda install --yes \
-    'ipywidgets=4.0*' \
-    'pandas=0.17*' \
-    'matplotlib=1.4*' \
-    'scipy=0.16*' \
-    'seaborn=0.6*' \
-    'scikit-learn=0.16*' \
-    'scikit-image=0.11*' \
-    'sympy=0.7*' \
-    'cython=0.22*' \
-    'patsy=0.4*' \
-    'statsmodels=0.6*' \
-    'cloudpickle=0.1*' \
-    'dill=0.2*' \
-    'numba=0.22*' \
-    'bokeh=0.10*' \
-    && conda clean -yt
-
-# Install Python 2 packages
-RUN conda create -p $CONDA_DIR/envs/python2 python=2.7 \
-    'ipython=4.0*' \
-    'ipywidgets=4.0*' \
-    'pandas=0.17*' \
-    'matplotlib=1.4*' \
-    'scipy=0.16*' \
-    'seaborn=0.6*' \
-    'scikit-learn=0.16*' \
-    'scikit-image=0.11*' \
-    'sympy=0.7*' \
-    'cython=0.22*' \
-    'patsy=0.4*' \
-    'statsmodels=0.6*' \
-    'cloudpickle=0.1*' \
-    'dill=0.2*' \
-    'numba=0.22*' \
-    'bokeh=0.10*' \
-    pyzmq \
-    && conda clean -yt
-
 # R packages including IRKernel which gets installed globally.
-RUN conda config --add channels r
-RUN conda install --yes \
+RUN conda config --add channels r && \
+    conda install --quiet --yes \
     'rpy2=2.7*' \
     'r-base=3.2*' \
     'r-irkernel=0.5*' \
@@ -73,12 +36,5 @@ RUN conda install --yes \
     'r-nycflights13=0.1*' \
     'r-caret=6.0*' \
     'r-rcurl=1.95*' \
-    'r-randomforest=4.6*' && conda clean -yt
+    'r-randomforest=4.6*' && conda clean -tipsy
 
-USER root
-
-# Install Python 2 kernel spec globally to avoid permission problems when NB_UID
-# switching at runtime.
-RUN $CONDA_DIR/envs/python2/bin/python \
-    $CONDA_DIR/envs/python2/bin/ipython \
-    kernelspec install-self
