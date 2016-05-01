@@ -34,3 +34,7 @@ run-aws-ds:
 
 pull-docker-ds:
 	docker pull jupyter/datascience-notebook
+
+remove-all-images:
+	sudo docker rm $(sudo docker ps -a -q)
+	sudo docker rmi $(sudo docker images -q)
