@@ -38,3 +38,6 @@ pull-docker-ds:
 remove-all-images:
 	sudo docker rm $(sudo docker ps -a -q)
 	sudo docker rmi $(sudo docker images -q)
+
+long-share-folder:
+	/C/Program\ Files/Oracle/VirtualBox/VBoxManage sharedfolder add default --name notebooks --hostpath `pwd` --automount
