@@ -1,4 +1,6 @@
-# JupyterServer
+
+
+# DEPRECATED JupyterServer
 ```
                                    ##         .
                              ## ## ##        ==
